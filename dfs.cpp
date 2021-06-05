@@ -1,9 +1,26 @@
-void dfs(int x)
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+bool vis[(int)(1e5+1)];
+// graph waali 
+void dfs(int u)
 {
-	visited[x]=1;
-	for(int i=0;i<v[x].size();i++)
+   vis[u] = true;  
+   for(int i:v[u])
+   {
+   	if(!vis[i])
+   		dfs(i);
+   }
+
+}
+
+// tree waali 
+void dfs(int child,int parent)
+{
+	v[child]=parent; 
+	for(int i:v[child])
 	{
-		if(visited[v[x][i]]==0)
-		dfs(v[x][i]);
+		if(i!=v[child])
+			dfs(i,child);
 	}
 }
