@@ -6,7 +6,8 @@ bool dfs(int node,int parent)
 	{
 		if(visited[i]==0)
 		{
-			dfs(i,node);
+			if(dfs(i,node)==true)
+				return true;
 		}
 		else
 		{
